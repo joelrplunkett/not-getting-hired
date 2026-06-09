@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why You’re Not Getting Hired — Hospitality Edition</title>
+  <meta name="description" content="Working guide structure for Marta's hospitality hiring guide: CVs, applications, interviews, first shifts, and what managers actually notice." />
+  <style>
+    :root {
+      --bg: #f4f6f8;
+      --paper: #ffffff;
+      --ink: #1b1f23;
+      --muted: #68706a;
+      --line: #e1e4e8;
+      --accent: #6c5ce7;
+      --accent-dark: #4b3fc1;
+      --accent-soft: #ece9ff;
+      --teal: #00a8a8;
+      --teal-soft: #e6f7f7;
+      --coral: #ff7675;
+      --cream: #f9fbfc;
+      --white: #ffffff;
+      --shadow: 0 26px 80px rgba(27, 31, 35, 0.12);
+      --soft-shadow: 0 12px 34px rgba(27, 31, 35, 0.06);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      padding-bottom: 84px;
+      background:
+        radial-gradient(circle at 12% 5%, rgba(108, 92, 231, 0.12), transparent 30%),
+        radial-gradient(circle at 88% 8%, rgba(0, 168, 168, 0.12), transparent 28%),
+        linear-gradient(135deg, #f7f7fb 0%, var(--bg) 55%, #eef7f7 100%);
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.64;
+    }
+
+    a { color: inherit; }
+
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 42px 22px 90px;
+    }
+
+    .product {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      min-height: clamp(580px, 70svh, 780px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.72fr);
+      gap: 48px;
+      align-items: end;
+      padding: clamp(42px, 8vw, 86px);
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.96), rgba(244,246,248,0.96)),
+        radial-gradient(circle at 86% 16%, rgba(108, 92, 231, 0.14), transparent 32%);
+    }
+
+    .kicker,
+    .module-label,
+    .chapter-number,
+    .pill {
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .kicker {
+      color: var(--accent);
+      font-size: 0.78rem;
+      margin-bottom: 22px;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.02;
+      letter-spacing: -0.035em;
+      text-wrap: balance;
+    }
+
+    h1 {
+      max-width: 800px;
+      font-size: clamp(3rem, 7vw, 6.3rem);
+    }
+
+    .subtitle {
+      max-width: 700px;
+      margin: 28px 0 0;
+      color: var(--muted);
+      font-size: clamp(1.15rem, 2vw, 1.45rem);
+    }
+
+    .hero-card {
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 380px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--white);
+      box-shadow: var(--soft-shadow);
+    }
+
+    .hero-card p {
+      margin: 0 0 18px;
+      font-size: 1.08rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: 16px;
+      padding: 7px 10px;
+      border: 1px solid rgba(108, 92, 231, 0.2);
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      font-size: 0.72rem;
+    }
+
+    .contents {
+      padding: 40px clamp(24px, 7vw, 86px);
+      border-bottom: 1px solid var(--line);
+      background: #f8f8fc;
+    }
+
+    .contents h2 {
+      margin-bottom: 20px;
+      font-size: clamp(1.8rem, 3vw, 2.55rem);
+    }
+
+    .contents-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .contents-grid a {
+      display: flex;
+      min-height: 126px;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: var(--white);
+      box-shadow: var(--soft-shadow);
+      text-decoration: none;
+    }
+
+    .contents-grid strong {
+      color: var(--accent);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .contents-grid em {
+      font-size: 1.15rem;
+      font-style: normal;
+      line-height: 1.2;
+    }
+
+    .content {
+      padding: clamp(46px, 8vw, 88px) clamp(24px, 7vw, 86px);
+      counter-reset: chapter;
+    }
+
+    .chapter {
+      display: grid;
+      grid-template-columns: 136px minmax(0, 720px);
+      gap: 44px;
+      max-width: 940px;
+      margin: 0 auto 96px;
+      padding-top: 72px;
+      border-top: 1px solid var(--line);
+      counter-increment: chapter;
+    }
+
+    .chapter:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    .chapter-number {
+      position: sticky;
+      top: 24px;
+      align-self: start;
+      padding-top: 8px;
+      border-top: 3px solid var(--accent);
+      color: var(--accent);
+      font-size: 0.78rem;
+      line-height: 1.35;
+    }
+
+    .chapter-number::after {
+      content: counter(chapter, decimal-leading-zero);
+      display: block;
+      margin-top: 6px;
+      font-size: 2rem;
+      letter-spacing: -0.04em;
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      text-transform: none;
+    }
+
+    .chapter-body > * + * { margin-top: 26px; }
+
+    .chapter-opener {
+      display: grid;
+      gap: 18px;
+      margin-bottom: 34px;
+    }
+
+    .chapter-opener h2 {
+      font-size: clamp(2.2rem, 4.3vw, 4rem);
+    }
+
+    .chapter-opener .lede {
+      max-width: 660px;
+      color: var(--muted);
+      font-size: 1.22rem;
+      margin: 0;
+    }
+
+    .lesson-map {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .lesson-map div {
+      min-height: 116px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--white);
+    }
+
+    .lesson-map strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--accent);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.74rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .lesson-map p { margin: 0; line-height: 1.45; }
+
+    .module,
+    .field-note,
+    .tool,
+    .bottom-line {
+      border-radius: 18px;
+    }
+
+    .module {
+      padding: 28px;
+      border: 1px solid var(--line);
+      background: var(--white);
+      box-shadow: var(--soft-shadow);
+    }
+
+    .module h3 {
+      margin-bottom: 16px;
+      color: var(--accent-dark);
+      font-size: clamp(1.45rem, 2.5vw, 2rem);
+    }
+
+    .module p,
+    .field-note p,
+    .tool p,
+    .bottom-line p {
+      margin: 0 0 16px;
+      font-size: 1.08rem;
+    }
+
+    .module p:last-child,
+    .field-note p:last-child,
+    .tool p:last-child,
+    .bottom-line p:last-child { margin-bottom: 0; }
+
+    .module-label {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--accent);
+      font-size: 0.74rem;
+    }
+
+    .field-note {
+      position: relative;
+      padding: 28px 30px;
+      border: 1px solid #d6d1ec;
+      background: #fbfaff;
+    }
+
+    .field-note::before {
+      content: "";
+      position: absolute;
+      inset: 18px auto 18px 0;
+      width: 5px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .prompt-box {
+      padding: 22px;
+      border: 1px dashed rgba(108, 92, 231, 0.45);
+      border-radius: 16px;
+      background: var(--accent-soft);
+    }
+
+    .prompt-box strong {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--accent-dark);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .prompt-box ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .prompt-box li { margin: 8px 0; }
+
+    .tool {
+      padding: 28px;
+      background: #1f3f3d;
+      color: #fffaf2;
+      box-shadow: 0 16px 38px rgba(31, 63, 61, 0.22);
+    }
+
+    .tool .module-label,
+    .tool h3,
+    .tool strong { color: #bff5ed; }
+
+    .tool h3 {
+      margin-bottom: 16px;
+      font-size: clamp(1.5rem, 2.8vw, 2.15rem);
+    }
+
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .tool-card {
+      min-height: 110px;
+      padding: 18px;
+      border: 1px solid rgba(255, 250, 242, 0.2);
+      border-radius: 13px;
+      background: rgba(255, 250, 242, 0.08);
+    }
+
+    .tool-card p {
+      color: #fffaf2;
+      line-height: 1.42;
+    }
+
+    .tool-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.76rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .bottom-line {
+      padding: 30px;
+      background: #1b1f23;
+      color: #fffaf2;
+    }
+
+    .bottom-line strong { color: #bff5ed; }
+
+    .placeholder {
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .tracker {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      z-index: 50;
+      display: grid;
+      grid-template-columns: minmax(190px, auto) minmax(220px, 360px);
+      gap: 18px;
+      align-items: center;
+      width: min(calc(100% - 32px), 840px);
+      padding: 12px 14px;
+      border: 1px solid rgba(225, 228, 232, 0.9);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 18px 52px rgba(27, 31, 35, 0.16);
+      backdrop-filter: blur(16px);
+      transform: translateX(-50%);
+    }
+
+    .tracker-label {
+      min-width: 0;
+      color: var(--accent);
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .tracker-label span { color: var(--muted); }
+
+    .tracker-rail {
+      height: 7px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: rgba(225, 228, 232, 0.95);
+    }
+
+    .tracker-fill {
+      display: block;
+      width: 0%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--accent), var(--teal));
+    }
+
+    .tracker-dots {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .tracker-dot {
+      display: block;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(108, 92, 231, 0.2);
+      text-indent: -999px;
+      overflow: hidden;
+    }
+
+    .tracker-dot.is-active { background: var(--accent); }
+    .tracker-dot.is-read { background: var(--teal); }
+
+    @media (max-width: 920px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .contents-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .chapter { grid-template-columns: 1fr; gap: 18px; }
+      .chapter-number { position: static; width: 122px; }
+      .lesson-map, .tool-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      body { padding-bottom: 122px; }
+      .wrap { padding: 0; }
+      .product { border-radius: 0; border-left: 0; border-right: 0; }
+      .hero, .contents, .content { padding-left: 22px; padding-right: 22px; }
+      .hero { padding-top: 44px; padding-bottom: 42px; }
+      h1 { max-width: 11ch; font-size: clamp(2.25rem, 12vw, 3.25rem); }
+      .contents-grid { grid-template-columns: 1fr; }
+      .contents-grid a { min-height: 96px; }
+      .chapter { margin-bottom: 74px; padding-top: 52px; }
+      .module, .field-note, .tool, .bottom-line, .prompt-box { padding: 22px; }
+      .tracker { bottom: 10px; grid-template-columns: 1fr; gap: 10px; width: calc(100% - 20px); border-radius: 18px; }
+      .tracker-label { font-size: 0.66rem; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <article class="product">
+      <header class="hero">
+        <div>
+          <div class="kicker">Working guide draft · Marta</div>
+          <h1>Why You’re Not Getting Hired</h1>
+          <p class="subtitle">Hospitality Edition — a practical guide built around what managers actually notice in CVs, interviews, applications, and first shifts.</p>
+        </div>
+        <aside class="hero-card">
+          <div>
+            <span class="pill">Structure first · stories next</span>
+            <p><strong>This is not meant to be polished yet.</strong></p>
+            <p>It’s a working page showing the chapter structure, the hooks, and exactly where Marta should inject her own experience.</p>
+          </div>
+          <p class="placeholder">Start by filling in the Field Notes. That’s where the value is.</p>
+        </aside>
+      </header>
+
+      <nav class="contents" aria-label="Guide contents">
+        <h2>Inside the guide</h2>
+        <ol class="contents-grid">
+          <li><a href="#pattern"><strong>01</strong><em>The Pattern</em></a></li>
+          <li><a href="#cv"><strong>02</strong><em>CV Reality</em></a></li>
+          <li><a href="#black-hole"><strong>03</strong><em>The Application Black Hole</em></a></li>
+          <li><a href="#interviews"><strong>04</strong><em>Interview Truth</em></a></li>
+          <li><a href="#first-shift"><strong>05</strong><em>First Shift Reality</em></a></li>
+          <li><a href="#fix"><strong>06</strong><em>The Fix</em></a></li>
+        </ol>
+      </nav>
+
+      <div class="content">
+        <section class="chapter" id="pattern">
+          <div class="chapter-number">Chapter</div>
+          <div class="chapter-body">
+            <div class="chapter-opener">
+              <h2>The Pattern</h2>
+              <p class="lede">Most people think they are being ignored because they are unlucky, inexperienced, or applying at the wrong time. Sometimes that’s true. But often, they’re simply not giving the manager enough reason to trust them.</p>
+              <div class="lesson-map">
+                <div><strong>What people think</strong><p>“I applied everywhere… no one’s replying.”</p></div>
+                <div><strong>What actually happens</strong><p>Managers filter fast. Most candidates never really get considered.</p></div>
+                <div><strong>Why it matters</strong><p>You can’t fix the problem if you don’t know where it’s breaking.</p></div>
+              </div>
+            </div>
+
+            <div class="module">
+              <span class="module-label">The shift</span>
+              <h3>Candidates think in effort. Managers think in risk.</h3>
+              <p>Applicants usually focus on how many jobs they applied for, how long they spent making the CV, or how badly they want the job.</p>
+              <p>Managers are asking something else: will this person make my shift easier, or harder?</p>
+            </div>
+
+            <div class="field-note">
+              <span class="module-label">Field Notes — Marta adds here</span>
+              <p class="placeholder">Add a real example of someone who thought they were a good candidate, but gave off the wrong signals quickly.</p>
+            </div>
+
+            <div class="prompt-box">
+              <strong>Memory triggers</strong>
+              <ul>
+                <li>“I knew in 10 seconds this person wasn’t getting the job because…”</li>
+                <li>“This candidate looked perfect on paper, but…”</li>
+                <li>“We had 50 applicants — here’s what actually separated them…”</li>
+              </ul>
+            </div>
+
+            <div class="tool">
+              <span class="module-label">Use This</span>
+              <h3>Candidate thinking vs manager thinking</h3>
+              <div class="tool-grid">
+                <div class="tool-card"><strong>Candidate</strong><p>“I have experience.”</p></div>
+                <div class="tool-card"><strong>Manager</strong><p>“Can you adapt, or are you going to do things your way?”</p></div>
+                <div class="tool-card"><strong>Candidate</strong><p>“I’ve worked in hospitality before.”</p></div>
+                <div class="tool-card"><strong>Manager</strong><p>“Do I need to untrain you before I can train you?”</p></div>
+                <div class="tool-card"><strong>Candidate</strong><p>“I really want this job.”</p></div>
+                <div class="tool-card"><strong>Manager</strong><p>“Will you show up, listen, and learn?”</p></div>
+              </div>
+
+              <div style="margin-top:22px; display:grid; gap:18px; max-width:620px;">
+                <div>
+                  <p><strong>What candidates don’t realise</strong></p>
+                  <p>Saying “I have experience” sounds like a strong opening. It’s not.</p>
+                  <p>Managers can already tell — and it doesn’t win you the points you think it does.</p>
+                </div>
+
+                <div>
+                  <p><strong>The part people get wrong</strong></p>
+                  <p>The real question isn’t “Do you have experience?”</p>
+                  <p>It’s whether you can drop it and learn how this place works.</p>
+                  <p>Old habits are harder to deal with than no habits at all.</p>
+                </div>
+
+                <div>
+                  <p><strong>The uncomfortable truth</strong></p>
+                  <p>Sometimes managers prefer less experience.</p>
+                  <p>It’s easier to teach from scratch than to undo someone.</p>
+                </div>
+
+                <div>
+                  <p><strong>What actually matters</strong></p>
+                  <p>They’re looking at how you come across — not just what you’ve done.</p>
+                  <p>Attitude, listening, how you take feedback, how you behave under pressure.</p>
+                </div>
+
+                <div>
+                  <p><strong>The shift</strong></p>
+                  <p>Don’t lead with experience.</p>
+                  <p>Show that you adapt, listen, and are easy to train.</p>
+                  <p>That’s what gets you hired.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bottom-line">
+              <p><strong>Bottom line:</strong> Most people aren’t unlucky. They’re invisible.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="chapter" id="cv">
+          <div class="chapter-number">Chapter</div>
+          <div class="chapter-body">
+            <div class="chapter-opener">
+              <h2>CV Reality</h2>
+              <p class="lede">A hospitality CV does not need to be beautiful. It needs to make the manager understand you quickly.</p>
+              <div class="lesson-map">
+                <div><strong>What people think</strong><p>“My CV is fine. I’ve got experience.”</p></div>
+                <div><strong>What actually happens</strong><p>Most CVs don’t communicate anything clearly.</p></div>
+                <div><strong>Why it matters</strong><p>If your CV doesn’t land in 10 seconds, it’s probably done.</p></div>
+              </div>
+            </div>
+
+            <div class="module">
+              <span class="module-label">The mistake</span>
+              <h3>Responsibilities are not proof.</h3>
+              <p>“Served customers.” “Worked in a team.” “Handled pressure.”</p>
+              <p>Fine. But every hospitality CV says that.</p>
+              <p>The question is: what does your CV prove?</p>
+            </div>
+
+            <div class="field-note">
+              <span class="module-label">Field Notes — Marta adds here</span>
+              <p class="placeholder">Add examples of CV lines that sound good to candidates but tell a manager nothing.</p>
+            </div>
+
+            <div class="prompt-box">
+              <strong>Memory triggers</strong>
+              <ul>
+                <li>“I didn’t even finish reading this CV because…”</li>
+                <li>“This line looks good but tells me nothing…”</li>
+                <li>“This one small change would’ve made me call them…”</li>
+              </ul>
+            </div>
+
+            <div class="tool">
+              <span class="module-label">Use This</span>
+              <h3>The 10-second CV test</h3>
+              <div class="tool-grid">
+                <div class="tool-card"><strong>Clear role</strong><p>Can I see what jobs you’ve actually done?</p></div>
+                <div class="tool-card"><strong>Availability</strong><p>Can I tell when you can work?</p></div>
+                <div class="tool-card"><strong>Proof</strong><p>Do your examples show pressure, reliability, or responsibility?</p></div>
+                <div class="tool-card"><strong>No noise</strong><p>Is the important stuff easy to find?</p></div>
+              </div>
+            </div>
+
+            <div class="bottom-line">
+              <p><strong>Bottom line:</strong> Clarity beats effort every time.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="chapter" id="black-hole">
+          <div class="chapter-number">Chapter</div>
+          <div class="chapter-body">
+            <div class="chapter-opener">
+              <h2>The Application Black Hole</h2>
+              <p class="lede">Not hearing back feels personal. Sometimes it isn’t. Sometimes the system, timing, volume, or one small mistake killed the application before it really began.</p>
+              <div class="lesson-map">
+                <div><strong>What people think</strong><p>“They didn’t reply. I must not be good enough.”</p></div>
+                <div><strong>What actually happens</strong><p>Volume, timing, and filtering decide most outcomes.</p></div>
+                <div><strong>Why it matters</strong><p>Rejection is often mechanical, not personal — but some of it is fixable.</p></div>
+              </div>
+            </div>
+
+            <div class="module">
+              <span class="module-label">Behind the scenes</span>
+              <h3>Managers are not reading applications slowly.</h3>
+              <p>They’re hiring around rotas, gaps, sick leave, busy periods, turnover, and pressure from above.</p>
+              <p>If your application creates doubt, it is easy to skip.</p>
+            </div>
+
+            <div class="field-note">
+              <span class="module-label">Field Notes — Marta adds here</span>
+              <p class="placeholder">Add what actually happens when a venue receives too many applications, or when timing is bad.</p>
+            </div>
+
+            <div class="prompt-box">
+              <strong>Memory triggers</strong>
+              <ul>
+                <li>“People think we read every CV. We don’t…”</li>
+                <li>“This tiny mistake equals automatic no…”</li>
+                <li>“You weren’t rejected personally — here’s why…”</li>
+              </ul>
+            </div>
+
+            <div class="tool">
+              <span class="module-label">Use This</span>
+              <h3>Control what you can control</h3>
+              <div class="tool-grid">
+                <div class="tool-card"><strong>You control</strong><p>Clarity, timing, follow-up, availability, attitude.</p></div>
+                <div class="tool-card"><strong>You don’t control</strong><p>How many people applied, internal candidates, budget, timing.</p></div>
+              </div>
+            </div>
+
+            <div class="bottom-line">
+              <p><strong>Bottom line:</strong> Most rejection isn’t personal — but that doesn’t mean you can’t improve your odds.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="chapter" id="interviews">
+          <div class="chapter-number">Chapter</div>
+          <div class="chapter-body">
+            <div class="chapter-opener">
+              <h2>Interview Truth</h2>
+              <p class="lede">Hospitality interviews are not about perfect answers. They’re about whether the manager can picture you working well with the team, the customers, and the pressure.</p>
+              <div class="lesson-map">
+                <div><strong>What people think</strong><p>“I just need to answer the questions well.”</p></div>
+                <div><strong>What actually happens</strong><p>Decisions are made on energy, clarity, and reliability signals.</p></div>
+                <div><strong>Why it matters</strong><p>Perfect answers don’t matter if the manager doesn’t trust the person giving them.</p></div>
+              </div>
+            </div>
+
+            <div class="module">
+              <span class="module-label">The truth</span>
+              <h3>Managers are listening for risk.</h3>
+              <p>Can you talk to people? Can you take feedback? Are you practical? Are you going to make drama? Are you trainable?</p>
+              <p>The interview is not just a conversation. It’s a risk check.</p>
+            </div>
+
+            <div class="field-note">
+              <span class="module-label">Field Notes — Marta adds here</span>
+              <p class="placeholder">Add one example of someone who interviewed well because they felt easy to work with, and one who sounded fine but created doubt.</p>
+            </div>
+
+            <div class="prompt-box">
+              <strong>Memory triggers</strong>
+              <ul>
+                <li>“I knew I was going to hire them within 2 minutes because…”</li>
+                <li>“This answer sounds good but means nothing…”</li>
+                <li>“This behaviour makes me think: this will be hard work…”</li>
+              </ul>
+            </div>
+
+            <div class="tool">
+              <span class="module-label">Use This</span>
+              <h3>Interview signals</h3>
+              <div class="tool-grid">
+                <div class="tool-card"><strong>Good signal</strong><p>Clear, practical answers with real examples.</p></div>
+                <div class="tool-card"><strong>Bad signal</strong><p>Vague confidence with no proof.</p></div>
+                <div class="tool-card"><strong>Good signal</strong><p>Shows they listen and can take direction.</p></div>
+                <div class="tool-card"><strong>Bad signal</strong><p>Blames every previous workplace.</p></div>
+              </div>
+            </div>
+
+            <div class="bottom-line">
+              <p><strong>Bottom line:</strong> People don’t get hired for perfect answers. They get hired because the manager can imagine working with them.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="chapter" id="first-shift">
+          <div class="chapter-number">Chapter</div>
+          <div class="chapter-body">
+            <div class="chapter-opener">
+              <h2>First Shift Reality</h2>
+              <p class="lede">Getting hired is not the finish line. In hospitality, the first shift is the next filter.</p>
+              <div class="lesson-map">
+                <div><strong>What people think</strong><p>“If I got the job, I’m fine.”</p></div>
+                <div><strong>What actually happens</strong><p>Managers keep watching immediately.</p></div>
+                <div><strong>Why it matters</strong><p>Your first shift can confirm the decision or make them regret it fast.</p></div>
+              </div>
+            </div>
+
+            <div class="module">
+              <span class="module-label">The real test</span>
+              <h3>Managers are watching how you move.</h3>
+              <p>Not in a creepy way. In a practical way.</p>
+              <p>Do you notice what needs doing? Do you stand still? Do you ask smart questions? Do you disappear? Do you look offended when corrected?</p>
+            </div>
+
+            <div class="field-note">
+              <span class="module-label">Field Notes — Marta adds here</span>
+              <p class="placeholder">Add the behaviours you notice in the first hour that tell you whether someone will last.</p>
+            </div>
+
+            <div class="prompt-box">
+              <strong>Memory triggers</strong>
+              <ul>
+                <li>“Within the first hour I can tell if someone will last because…”</li>
+                <li>“This tiny behaviour is a green flag…”</li>
+                <li>“This one is a red flag people don’t realise…”</li>
+              </ul>
+            </div>
+
+            <div class="tool">
+              <span class="module-label">Use This</span>
+              <h3>First shift checklist</h3>
+              <div class="tool-grid">
+                <div class="tool-card"><strong>Awareness</strong><p>Do you see what’s happening around you?</p></div>
+                <div class="tool-card"><strong>Initiative</strong><p>Do you help without needing to be dragged?</p></div>
+                <div class="tool-card"><strong>Feedback</strong><p>Can you take correction without attitude?</p></div>
+                <div class="tool-card"><strong>Energy</strong><p>Do you bring calm usefulness, not chaos?</p></div>
+              </div>
+            </div>
+
+            <div class="bottom-line">
+              <p><strong>Bottom line:</strong> Getting hired is not the finish line. It’s the next filter.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="chapter" id="fix">
+          <div class="chapter-number">Chapter</div>
+          <div class="chapter-body">
+            <div class="chapter-opener">
+              <h2>The Fix</h2>
+              <p class="lede">Most people don’t need to change everything. They need to fix the few things that make managers hesitate.</p>
+              <div class="lesson-map">
+                <div><strong>What people think</strong><p>“I just need to try harder.”</p></div>
+                <div><strong>What actually happens</strong><p>Small targeted changes make the biggest difference.</p></div>
+                <div><strong>Why it matters</strong><p>Fixing the right thing changes everything.</p></div>
+              </div>
+            </div>
+
+            <div class="module">
+              <span class="module-label">The priority</span>
+              <h3>Fix what creates doubt first.</h3>
+              <p>If your CV is unclear, fix that before applying to 50 more places.</p>
+              <p>If your interview answers sound fake, fix that before memorising more lines.</p>
+              <p>If your first-shift behaviour makes you look passive, fix that before blaming the venue.</p>
+            </div>
+
+            <div class="field-note">
+              <span class="module-label">Field Notes — Marta adds here</span>
+              <p class="placeholder">Add what you would tell someone if they asked: “What should I fix first?”</p>
+            </div>
+
+            <div class="tool">
+              <span class="module-label">Use This</span>
+              <h3>Priority fixes</h3>
+              <div class="tool-grid">
+                <div class="tool-card"><strong>CV</strong><p>Make it clear, relevant, and easy to scan.</p></div>
+                <div class="tool-card"><strong>Application</strong><p>Apply with timing and clarity, not panic.</p></div>
+                <div class="tool-card"><strong>Interview</strong><p>Show reliability, trainability, and real examples.</p></div>
+                <div class="tool-card"><strong>First shift</strong><p>Notice, move, ask, listen, improve.</p></div>
+              </div>
+            </div>
+
+            <div class="bottom-line">
+              <p><strong>Bottom line:</strong> You don’t need to do everything better. You need to do the right things differently.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </article>
+  </main>
+
+  <aside class="tracker" aria-label="Reading progress">
+    <div class="tracker-label" data-tracker-label><span>Chapter 01</span> The Pattern</div>
+    <div>
+      <div class="tracker-rail" aria-hidden="true"><span class="tracker-fill" data-tracker-fill></span></div>
+      <div class="tracker-dots" aria-hidden="true">
+        <a class="tracker-dot is-active" href="#pattern">The Pattern</a>
+        <a class="tracker-dot" href="#cv">CV Reality</a>
+        <a class="tracker-dot" href="#black-hole">The Application Black Hole</a>
+        <a class="tracker-dot" href="#interviews">Interview Truth</a>
+        <a class="tracker-dot" href="#first-shift">First Shift Reality</a>
+        <a class="tracker-dot" href="#fix">The Fix</a>
+      </div>
+    </div>
+  </aside>
+
+  <script>
+    const chapters = [
+      { id: "pattern", label: "The Pattern" },
+      { id: "cv", label: "CV Reality" },
+      { id: "black-hole", label: "The Application Black Hole" },
+      { id: "interviews", label: "Interview Truth" },
+      { id: "first-shift", label: "First Shift Reality" },
+      { id: "fix", label: "The Fix" }
+    ].map((chapter) => ({ ...chapter, el: document.getElementById(chapter.id) }));
+
+    const fill = document.querySelector("[data-tracker-fill]");
+    const label = document.querySelector("[data-tracker-label]");
+    const dots = Array.from(document.querySelectorAll(".tracker-dot"));
+
+    function updateTracker() {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = maxScroll > 0 ? Math.min(scrollTop / maxScroll, 1) : 0;
+      fill.style.width = `${progress * 100}%`;
+
+      const probe = scrollTop + window.innerHeight * 0.35;
+      let active = 0;
+
+      chapters.forEach((chapter, index) => {
+        if (chapter.el && chapter.el.offsetTop <= probe) active = index;
+      });
+
+      const number = String(active + 1).padStart(2, "0");
+      label.innerHTML = `<span>Chapter ${number}</span> ${chapters[active].label}`;
+
+      dots.forEach((dot, index) => {
+        dot.classList.toggle("is-active", index === active);
+        dot.classList.toggle("is-read", index < active);
+      });
+    }
+
+    updateTracker();
+    window.addEventListener("scroll", updateTracker, { passive: true });
+    window.addEventListener("resize", updateTracker);
+  </script>
+</body>
+</html>
