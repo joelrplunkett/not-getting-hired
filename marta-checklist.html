@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marta's Guide Checklist</title>
+  <style>
+    :root {
+      --bg: #f4f1ec;
+      --paper: #ffffff;
+      --ink: #1b1f23;
+      --muted: #6a737d;
+      --line: #e1e4e8;
+      --accent: #6c5ce7;
+      --accent-soft: #ece9ff;
+      --teal: #00a8a8;
+      --teal-soft: #e6f7f7;
+      --gold: #f5a623;
+      --gold-soft: #fff8ec;
+      --green: #27ae60;
+      --green-soft: #eafaf1;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      padding: 40px 22px 80px;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.6;
+    }
+
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .header {
+      margin-bottom: 40px;
+    }
+
+    .header h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin: 0 0 10px;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+
+    .header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .progress-bar-wrap {
+      margin: 28px 0;
+      background: var(--line);
+      border-radius: 999px;
+      height: 10px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), var(--teal));
+      transition: width 0.4s ease;
+      width: 0%;
+    }
+
+    .progress-label {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .section {
+      margin-bottom: 32px;
+    }
+
+    .section-title {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 12px;
+    }
+
+    .task {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 20px 22px;
+      margin-bottom: 10px;
+      transition: background 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+
+    .task:hover {
+      border-color: var(--accent);
+    }
+
+    .task.done {
+      background: var(--green-soft);
+      border-color: #a8dfc0;
+    }
+
+    .task-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .checkbox {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      margin-top: 2px;
+      border: 2px solid var(--line);
+      border-radius: 6px;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .task.done .checkbox {
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    .checkmark {
+      display: none;
+      color: white;
+      font-size: 13px;
+      line-height: 1;
+    }
+
+    .task.done .checkmark { display: block; }
+
+    .task-title {
+      font-size: 1.05rem;
+      font-weight: bold;
+      margin: 0 0 4px;
+      color: var(--ink);
+    }
+
+    .task.done .task-title {
+      text-decoration: line-through;
+      color: var(--muted);
+    }
+
+    .task-desc {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .triggers {
+      margin-top: 14px;
+      padding: 14px 16px;
+      border: 1px dashed rgba(108, 92, 231, 0.3);
+      border-radius: 12px;
+      background: var(--accent-soft);
+    }
+
+    .triggers strong {
+      display: block;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .triggers ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .triggers li {
+      font-size: 0.92rem;
+      color: #4b3fc1;
+      margin-bottom: 6px;
+      font-style: italic;
+    }
+
+    .triggers li:last-child { margin-bottom: 0; }
+
+    .task.done .triggers {
+      background: #d4edda;
+      border-color: rgba(39, 174, 96, 0.3);
+    }
+
+    .task.done .triggers strong { color: var(--green); }
+    .task.done .triggers li { color: #1e7e34; }
+
+    .toggle-triggers {
+      margin-top: 12px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent);
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+    }
+
+    .toggle-triggers:hover { text-decoration: underline; }
+
+    .note {
+      padding: 20px 22px;
+      border-radius: 14px;
+      background: var(--gold-soft);
+      border: 1px solid #f5d78e;
+      font-size: 0.97rem;
+      margin-bottom: 32px;
+    }
+
+    .note strong {
+      color: var(--gold);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .note p { margin: 0; color: #7a5c0f; }
+
+    @media (max-width: 600px) {
+      body { padding: 28px 16px 60px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <div class="header">
+      <h1>Your guide checklist, Marta.</h1>
+      <p>Work through this at your own pace. The most important parts are the Field Notes — that's where your experience goes in.</p>
+    </div>
+
+    <div class="note">
+      <strong>Where to start</strong>
+      <p>Open <strong>guide.html</strong> in your browser, then come back here. Pick any chapter — they don't have to be done in order. Just pick the one you remember most about and start there.</p>
+    </div>
+
+    <div class="progress-label" id="progress-label">0 of 9 tasks done</div>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="progress-fill"></div>
+    </div>
+
+    <!-- CONTENT TASKS -->
+    <div class="section">
+      <div class="section-title">The guide content — fill these in</div>
+
+      <div class="task" id="task-pattern" onclick="toggle('task-pattern')">
+        <div class="task-top">
+          <div class="checkbox"><span class="checkmark">✓</span></div>
+          <div>
+            <div class="task-title">Chapter 1 — The Pattern</div>
+            <p class="task-desc">Write a real example of someone who seemed like a good candidate but gave off the wrong signals immediately.</p>
+            <button class="toggle-triggers" onclick="showTriggers(event, 'triggers-pattern')">Show memory triggers ↓</button>
+          </div>
+        </div>
+        <div class="triggers" id="triggers-pattern" style="display:none;">
+          <strong>To get you started, try finishing one of these sentences:</strong>
+          <ul>
+            <li>"I knew in 10 seconds this person wasn't getting the job because…"</li>
+            <li>"This candidate looked perfect on paper, but…"</li>
+            <li>"We had 50 applicants — here's what actually separated them…"</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="task" id="task-cv" onclick="toggle('task-cv')">
+        <div class="task-top">
+          <div class="checkbox"><span class="checkmark">✓</span></div>
+          <div>
+            <div class="task-title">Chapter 2 — CV Reality</div>
+            <p class="task-desc">Give examples of CV lines that sound good to candidates but actually tell a manager nothing.</p>
+            <button class="toggle-triggers" onclick="showTriggers(event, 'triggers-cv')">Show memory triggers ↓</button>
+          </div>
+        </div>
+        <div class="triggers" id="triggers-cv" style="display:none;">
+          <strong>To get you started, try finishing one of these sentences:</strong>
+          <ul>
+            <li>"I didn't even finish reading this CV because…"</li>
+            <li>"This line looks good but tells me nothing…"</li>
+            <li>"This one small change would've made me call them…"</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="task" id="task-blackhole" onclick="toggle('task-blackhole')">
+        <div class="task-top">
+          <div class="checkbox"><span class="checkmark">✓</span></div>
+          <div>
+            <div class="task-title">Chapter 3 — The Application Black Hole</div>
+            <p class="task-desc">Describe what actually happens on the manager's side when there are too many applications, or when the timing is bad.</p>
+            <button class="toggle-triggers" onclick="showTriggers(event, 'triggers-blackhole')">Show memory triggers ↓</button>
+          </div>
+        </div>
+        <div class="triggers" id="triggers-blackhole" style="display:none;">
+          <strong>To get you started, try finishing one of these sentences:</strong>
+          <ul>
+            <li>"People think we read every CV. We don't…"</li>
+            <li>"This tiny mistake equals automatic no…"</li>
+            <li>"You weren't rejected personally — here's why…"</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="task" id="task-interviews" onclick="toggle('task-interviews')">
+        <div class="task-top">
+          <div class="checkbox"><span class="checkmark">✓</span></div>
+          <div>
+            <div class="task-title">Chapter 4 — Interview Truth</div>
+            <p class="task-desc">One example of someone who interviewed well because they felt easy to work with. One who sounded fine but created doubt.</p>
+            <button class="toggle-triggers" onclick="showTriggers(event, 'triggers-interviews')">Show memory triggers ↓</button>
+          </div>
+        </div>
+        <div class="triggers" id="triggers-interviews" style="display:none;">
+          <strong>To get you started, try finishing one of these sentences:</strong>
+          <ul>
+            <li>"I knew I was going to hire them within 2 minutes because…"</li>
+            <li>"This answer sounds great but means nothing…"</li>
+            <li>"This behaviour makes me think: this will be hard work…"</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="task" id="task-firstshift" onclick="toggle('task-firstshift')">
+        <div class="task-top">
+          <div class="checkbox"><span class="checkmark">✓</span></div>
+          <div>
+            <div class="task-title">Chapter 5 — First Shift Reality</div>
+            <p class="task-desc">Describe the behaviours you notice in the first hour that tell you whether someone will last.</p>
+            <button class="toggle-triggers" onclick="showTriggers(event, 'triggers-firstshift')">Show memory triggers ↓</button>
+          </div>
+        </div>
+        <div class="triggers" id="triggers-firstshift" style="display:none;">
+          <strong>To get you started, try finishing one of these sentences:</strong>
+          <ul>
+            <li>"Within the first hour I can tell if someone will last because…"</li>
+            <li>"This tiny behaviour is a green flag…"</li>
+            <li>"This one is a red flag people don't even realise…"</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="task" id="task-fix" onclick="toggle('task-fix')">
+        <div class="task-top">
+          <div class="checkbox"><span class="checkmark">✓</span></div>
+          <div>
+            <div class="task-title">Chapter 6 — The Fix</div>
+            <p class="task-desc">What would you tell someone if they asked: "What should I fix first?"</p>
+            <button class="toggle-triggers" onclick="showTriggers(event, 'triggers-fix')">Show memory triggers ↓</button>
+          </div>
+        </div>
+        <div class="triggers" id="triggers-fix" style="display:none;">
+          <strong>To get you started, try finishing one of these sentences:</strong>
+          <ul>
+            <li>"The first thing I'd tell anyone who isn't getting hired is…"</li>
+            <li>"Most people waste time fixing the wrong thing — actually it's…"</li>
+            <li>"If you only changed one thing about your CV/interview/first shift…"</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SITE TASKS -->
+    <div class="section">
+      <div class="section-title">Site tasks — when you're ready</div>
+
+      <div class="task" id="task-email" onclick="toggle('task-email')">
+        <div class="task-top">
+          <div class="checkbox"><span class="checkmark">✓</span></div>
+          <div>
+            <div class="task-title">Set up a real waitlist email</div>
+            <p class="task-desc">The "Join the waitlist" button on the homepage currently goes nowhere. You'll need a real email address or a signup tool (Kit and Beehiiv are both free to start).</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="task" id="task-images" onclick="toggle('task-images')">
+        <div class="task-top">
+          <div class="checkbox"><span class="checkmark">✓</span></div>
+          <div>
+            <div class="task-title">Add images to the pages</div>
+            <p class="task-desc">There's a folder of good images (interview photos, candidate shots) that aren't being used anywhere yet. These could bring the pages to life.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="task" id="task-name" onclick="toggle('task-name')">
+        <div class="task-top">
+          <div class="checkbox"><span class="checkmark">✓</span></div>
+          <div>
+            <div class="task-title">Add your name and a short bio</div>
+            <p class="task-desc">The site currently says "Marta — Hospitality Hiring Guide" but doesn't tell visitors who you are or why they should trust you. A few sentences about your experience would go a long way.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    const TOTAL = 9;
+
+    function getState() {
+      try {
+        return JSON.parse(localStorage.getItem('marta-checklist') || '{}');
+      } catch { return {}; }
+    }
+
+    function saveState(state) {
+      localStorage.setItem('marta-checklist', JSON.stringify(state));
+    }
+
+    function toggle(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const state = getState();
+      const isDone = el.classList.contains('done');
+      if (isDone) {
+        el.classList.remove('done');
+        delete state[id];
+      } else {
+        el.classList.add('done');
+        state[id] = true;
+      }
+      saveState(state);
+      updateProgress();
+    }
+
+    function showTriggers(e, id) {
+      e.stopPropagation();
+      const el = document.getElementById(id);
+      if (!el) return;
+      const isVisible = el.style.display !== 'none';
+      el.style.display = isVisible ? 'none' : 'block';
+      e.target.textContent = isVisible ? 'Show memory triggers ↓' : 'Hide memory triggers ↑';
+    }
+
+    function updateProgress() {
+      const state = getState();
+      const done = Object.keys(state).length;
+      const pct = Math.round((done / TOTAL) * 100);
+      document.getElementById('progress-fill').style.width = pct + '%';
+      document.getElementById('progress-label').textContent = `${done} of ${TOTAL} tasks done`;
+    }
+
+    function restoreState() {
+      const state = getState();
+      Object.keys(state).forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.classList.add('done');
+      });
+      updateProgress();
+    }
+
+    restoreState();
+  </script>
+</body>
+</html>
