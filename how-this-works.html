@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How This Works — Marta's Guide</title>
+  <style>
+    :root {
+      --bg: #f4f1ec;
+      --paper: #ffffff;
+      --ink: #1b1f23;
+      --muted: #6a737d;
+      --line: #e1e4e8;
+      --accent: #6c5ce7;
+      --accent-soft: #ece9ff;
+      --teal: #00a8a8;
+      --teal-soft: #e6f7f7;
+      --gold: #f5a623;
+      --gold-soft: #fff8ec;
+      --green: #27ae60;
+      --green-soft: #eafaf1;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      padding: 40px 22px 80px;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.6;
+    }
+
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .header {
+      margin-bottom: 40px;
+    }
+
+    .header h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin: 0 0 10px;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+
+    .header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .section-title {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 12px;
+    }
+
+    .section {
+      margin-bottom: 36px;
+    }
+
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 22px 24px;
+      margin-bottom: 10px;
+    }
+
+    .card h2 {
+      font-size: 1.2rem;
+      margin: 0 0 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.97rem;
+    }
+
+    .card p + p {
+      margin-top: 8px;
+    }
+
+    .card .tag {
+      display: inline-block;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border-radius: 999px;
+      padding: 4px 10px;
+      margin-bottom: 10px;
+    }
+
+    .steps {
+      counter-reset: step;
+      display: grid;
+      gap: 10px;
+    }
+
+    .step {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 20px 22px 20px 68px;
+      position: relative;
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 22px;
+      top: 18px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 800;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .step strong {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .step p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .step.highlight {
+      border-color: var(--teal);
+      background: var(--teal-soft);
+    }
+
+    .step.highlight::before {
+      background: var(--teal);
+      color: white;
+    }
+
+    .note {
+      padding: 20px 22px;
+      border-radius: 14px;
+      background: var(--gold-soft);
+      border: 1px solid #f5d78e;
+      font-size: 0.97rem;
+      margin-bottom: 32px;
+    }
+
+    .note strong {
+      color: var(--gold);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .note p { margin: 0; color: #7a5c0f; }
+
+    .can-do-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .can-do {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px 20px;
+      font-size: 0.95rem;
+    }
+
+    .can-do::before {
+      content: "✓";
+      display: block;
+      color: var(--teal);
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .can-do p { margin: 0; color: var(--muted); }
+
+    .link-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 20px 22px;
+      text-decoration: none;
+      color: var(--ink);
+      margin-bottom: 10px;
+      transition: border-color 0.2s;
+    }
+
+    .link-card:hover { border-color: var(--accent); }
+
+    .link-card strong { display: block; font-size: 1rem; margin-bottom: 3px; }
+    .link-card p { margin: 0; font-size: 0.9rem; color: var(--muted); }
+    .link-card .arrow { font-size: 1.3rem; color: var(--accent); flex-shrink: 0; }
+
+    @media (max-width: 600px) {
+      body { padding: 28px 16px 60px; }
+      .can-do-grid { grid-template-columns: 1fr; }
+      .step { padding-left: 60px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <div class="header">
+      <h1>How this all works.</h1>
+      <p>Plain English. No jargon. Everything you need to know to work on your site.</p>
+    </div>
+
+    <div class="note">
+      <strong>The short version</strong>
+      <p>You don't need to touch any of the tech. Just open Cowork, tell Claude what you want, and it does the work in your files. Two clicks in GitHub Desktop saves it. That's the whole thing.</p>
+    </div>
+
+    <!-- WHAT IS ALL THIS -->
+    <div class="section">
+      <div class="section-title">What all this stuff is</div>
+
+      <div class="card">
+        <span class="tag">The folder</span>
+        <h2>Your website lives here</h2>
+        <p>The folder on your computer contains two HTML files and some images. That's your website. Everything else is just tools that help you edit and back it up.</p>
+      </div>
+
+      <div class="card">
+        <span class="tag">GitHub</span>
+        <h2>A backup system with memory</h2>
+        <p>Every time you save a change to GitHub, it remembers the full history. Nothing can ever really get lost.</p>
+        <p><strong>GitHub Desktop</strong> is the app that syncs your folder to that backup. You only need to open it after changes are made — two button clicks and you're done.</p>
+      </div>
+
+      <div class="card">
+        <span class="tag">VS Code</span>
+        <h2>A text editor — you don't need it</h2>
+        <p>It's like a fancier Notepad for editing HTML files. Claude handles all of that for you, so you probably won't need to open this at all.</p>
+      </div>
+
+    </div>
+
+    <!-- HOW TO WORK WITH CLAUDE -->
+    <div class="section">
+      <div class="section-title">How to work on your site</div>
+      <div class="steps">
+
+        <div class="step">
+          <strong>Open Cowork and start a chat with Claude</strong>
+          <p>Just talk to it in plain English. No special language needed.</p>
+        </div>
+
+        <div class="step">
+          <strong>Tell Claude what you want</strong>
+          <p>For example: "Add my story about the candidate who…" or "Change the wording in chapter 3" or "Fix the email button."</p>
+        </div>
+
+        <div class="step">
+          <strong>Claude edits the files directly</strong>
+          <p>It writes into your folder on your computer. You can open the HTML files in your browser to see the changes.</p>
+        </div>
+
+        <div class="step highlight">
+          <strong>Open GitHub Desktop</strong>
+          <p>It will show you what changed automatically.</p>
+        </div>
+
+        <div class="step highlight">
+          <strong>Press "Commit to main" then "Push origin"</strong>
+          <p>Two clicks. That's it. Your changes are backed up and saved.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- WHAT CLAUDE CAN DO -->
+    <div class="section">
+      <div class="section-title">What Claude can do for you</div>
+      <div class="can-do-grid">
+        <div class="can-do"><p>Write and edit your guide content from your stories</p></div>
+        <div class="can-do"><p>Change wording, layout, or colours</p></div>
+        <div class="can-do"><p>Add images to the pages</p></div>
+        <div class="can-do"><p>Fix broken buttons or links</p></div>
+        <div class="can-do"><p>Build new pages or sections</p></div>
+        <div class="can-do"><p>Explain anything you don't understand</p></div>
+      </div>
+    </div>
+
+    <!-- LINKS -->
+    <div class="section">
+      <div class="section-title">Quick links</div>
+      <a class="link-card" href="marta-checklist.html">
+        <div>
+          <strong>Your checklist</strong>
+          <p>9 tasks to complete the guide — ticks save automatically</p>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+      <a class="link-card" href="index.html">
+        <div>
+          <strong>The homepage</strong>
+          <p>The landing page for your guide</p>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+      <a class="link-card" href="guide.html">
+        <div>
+          <strong>The guide</strong>
+          <p>All 6 chapters — this is where your content goes</p>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+
+  </div>
+</body>
+</html>
