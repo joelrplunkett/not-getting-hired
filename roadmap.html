@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Roadmap — Marta's Guide</title>
+  <style>
+    :root {
+      --bg: #f4f1ec;
+      --paper: #ffffff;
+      --ink: #1b1f23;
+      --muted: #6a737d;
+      --line: #e1e4e8;
+      --accent: #6c5ce7;
+      --accent-soft: #ece9ff;
+      --accent-dark: #4b3fc1;
+      --teal: #00a8a8;
+      --teal-soft: #e6f7f7;
+      --gold: #f5a623;
+      --gold-soft: #fff8ec;
+      --green: #27ae60;
+      --green-soft: #eafaf1;
+      --dark: #1b1f23;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      padding: 40px 22px 80px;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.6;
+    }
+
+    .wrap { max-width: 720px; margin: 0 auto; }
+
+    .header { margin-bottom: 40px; }
+
+    .header h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin: 0 0 10px;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+
+    .header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .section { margin-bottom: 40px; }
+
+    .section-title {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 14px;
+    }
+
+    /* WHAT THEY GET */
+    .get-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .get-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .get-card .icon {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .get-card strong {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .get-card p {
+      margin: 0;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    /* PHASES */
+    .phase {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 24px;
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    .phase.active {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .phase.active .phase-number { color: var(--accent); }
+    .phase.active .phase-title { color: var(--accent-dark); }
+
+    .phase-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+
+    .phase-number {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+      padding-top: 4px;
+    }
+
+    .phase-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin: 0 0 4px;
+      letter-spacing: -0.02em;
+    }
+
+    .phase-desc {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .phase-items {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .phase-items li {
+      padding: 12px 14px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(225,228,232,0.8);
+      font-size: 0.93rem;
+    }
+
+    .phase.active .phase-items li {
+      background: white;
+      border-color: rgba(108, 92, 231, 0.2);
+    }
+
+    .phase-items li strong {
+      color: var(--accent-dark);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .you-are-here {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: white;
+      background: var(--accent);
+      border-radius: 999px;
+      padding: 4px 10px;
+      margin-bottom: 12px;
+    }
+
+    /* ADVANTAGE */
+    .advantage {
+      background: var(--dark);
+      color: #fffaf2;
+      border-radius: 18px;
+      padding: 28px;
+      margin-bottom: 12px;
+    }
+
+    .advantage .section-title { color: #bff5ed; }
+
+    .advantage h2 {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      margin: 0 0 12px;
+      letter-spacing: -0.03em;
+      color: #fffaf2;
+    }
+
+    .advantage p {
+      margin: 0 0 10px;
+      font-size: 0.97rem;
+      color: #c8d0d8;
+    }
+
+    .advantage p:last-child { margin-bottom: 0; }
+
+    /* GROWTH */
+    .growth {
+      background: var(--teal-soft);
+      border: 1px solid #a0ddd8;
+      border-radius: 18px;
+      padding: 24px;
+    }
+
+    .growth .section-title { color: var(--teal); }
+
+    .growth h2 {
+      font-size: 1.2rem;
+      margin: 0 0 10px;
+      letter-spacing: -0.02em;
+    }
+
+    .growth-items {
+      display: grid;
+      gap: 8px;
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .growth-items li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.93rem;
+    }
+
+    .growth-items li::before {
+      content: "→";
+      color: var(--teal);
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 800;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* LINKS */
+    .link-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 20px 22px;
+      text-decoration: none;
+      color: var(--ink);
+      margin-bottom: 10px;
+      transition: border-color 0.2s;
+    }
+
+    .link-card:hover { border-color: var(--accent); }
+    .link-card strong { display: block; font-size: 1rem; margin-bottom: 3px; }
+    .link-card p { margin: 0; font-size: 0.9rem; color: var(--muted); }
+    .link-card .arrow { font-size: 1.3rem; color: var(--accent); flex-shrink: 0; }
+
+    @media (max-width: 600px) {
+      body { padding: 28px 16px 60px; }
+      .get-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <div class="header">
+      <h1>The roadmap.</h1>
+      <p>Where we are, where we're going, and what we're building toward.</p>
+    </div>
+
+    <!-- WHAT THEY GET -->
+    <div class="section">
+      <div class="section-title">What people get from Marta</div>
+      <div class="get-grid">
+        <div class="get-card">
+          <span class="icon">👁</span>
+          <strong>The manager's view</strong>
+          <p>What actually goes through a hiring manager's head — not what career blogs guess.</p>
+        </div>
+        <div class="get-card">
+          <span class="icon">💬</span>
+          <strong>Real stories</strong>
+          <p>Specific, honest examples from someone who has lived it on both sides of the table.</p>
+        </div>
+        <div class="get-card">
+          <span class="icon">🎯</span>
+          <strong>Practical fixes</strong>
+          <p>Not motivation. Not "believe in yourself." Actual things to change that affect the outcome.</p>
+        </div>
+        <div class="get-card">
+          <span class="icon">🤝</span>
+          <strong>Someone in their corner</strong>
+          <p>A guide that treats them like an adult trying to solve a real problem.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- THE ADVANTAGE -->
+    <div class="section">
+      <div class="advantage">
+        <div class="section-title">The unfair advantage</div>
+        <h2>Nobody else is doing this from the manager's side.</h2>
+        <p>Most job guides are written by career coaches who have never hired anyone, or by recruiters who work in corporate, not hospitality.</p>
+        <p>Marta has worked the floor, trained staff, interviewed candidates, and managed the aftermath. That combination — floor to management — is the whole point. It's rare. It's real. And it can't be faked.</p>
+      </div>
+    </div>
+
+    <!-- PHASES -->
+    <div class="section">
+      <div class="section-title">The journey — three phases</div>
+
+      <div class="phase active">
+        <div class="you-are-here">↓ You are here</div>
+        <div class="phase-top">
+          <div class="phase-number">Phase 01</div>
+          <div>
+            <div class="phase-title">Make it real</div>
+            <p class="phase-desc">Fill the guide with Marta's actual stories. Build something worth sharing.</p>
+          </div>
+        </div>
+        <ul class="phase-items">
+          <li><strong>Content</strong>Fill in the 6 Field Notes with real experiences</li>
+          <li><strong>Credibility</strong>Add a short "who is Marta" section to the site</li>
+          <li><strong>Polish</strong>Add images, fix the email button, tighten the wording</li>
+          <li><strong>Goal</strong>A guide someone would genuinely share with a friend</li>
+        </ul>
+      </div>
+
+      <div class="phase">
+        <div class="phase-top">
+          <div class="phase-number">Phase 02</div>
+          <div>
+            <div class="phase-title">Build a small audience</div>
+            <p class="phase-desc">Get the guide in front of people who actually need it. Build an email list.</p>
+          </div>
+        </div>
+        <ul class="phase-items">
+          <li><strong>Share</strong>Post the guide in hospitality Facebook groups, Reddit, LinkedIn</li>
+          <li><strong>Email list</strong>Set up a free signup so followers can hear from Marta directly</li>
+          <li><strong>Consistency</strong>Even occasional posts or tips keeps the audience warm</li>
+          <li><strong>Goal</strong>200 people who trust Marta beats 10,000 random visitors</li>
+        </ul>
+      </div>
+
+      <div class="phase">
+        <div class="phase-top">
+          <div class="phase-number">Phase 03</div>
+          <div>
+            <div class="phase-title">Monetise what only Marta can offer</div>
+            <p class="phase-desc">Turn trust and expertise into something people will pay for.</p>
+          </div>
+        </div>
+        <ul class="phase-items">
+          <li><strong>CV Reviews</strong>Marta reads your CV and tells you what a manager actually sees</li>
+          <li><strong>Interview Coaching</strong>One conversation before your big interview</li>
+          <li><strong>Deeper Guide</strong>A paid extended version with more detail and templates</li>
+          <li><strong>Goal</strong>A small income doing something Marta is genuinely good at</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CONTINUOUS GROWTH -->
+    <div class="section">
+      <div class="growth">
+        <div class="section-title">Continuous growth</div>
+        <h2>This builds on itself over time.</h2>
+        <ul class="growth-items">
+          <li>Every story Marta adds makes the guide more valuable</li>
+          <li>Every person who reads it and shares it grows the audience</li>
+          <li>Every email subscriber is someone who trusts her enough to hear more</li>
+          <li>The more specific and honest the content, the harder it is for anyone else to copy</li>
+          <li>Over time, Marta becomes the person hospitality job seekers actually know and trust</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- LINKS -->
+    <div class="section">
+      <div class="section-title">Quick links</div>
+      <a class="link-card" href="marta-checklist.html">
+        <div>
+          <strong>Your checklist</strong>
+          <p>Start here — 9 tasks to complete Phase 1</p>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+      <a class="link-card" href="how-this-works.html">
+        <div>
+          <strong>How this works</strong>
+          <p>Plain English guide to the tools and workflow</p>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+      <a class="link-card" href="guide.html">
+        <div>
+          <strong>The guide</strong>
+          <p>All 6 chapters — this is where your content goes</p>
+        </div>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+
+  </div>
+</body>
+</html>
